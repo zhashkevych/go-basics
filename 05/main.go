@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"storage"
 )
 
 type employee struct {
@@ -11,6 +10,12 @@ type employee struct {
 	name   string
 	age    int
 	salary int
+}
+
+type storage interface {
+	insert(e employee) error
+	get(id int) (employee, error)
+	delete(id int) error
 }
 
 type memoryStorage struct {
@@ -77,7 +82,7 @@ func main() {
 	spawnEmployees(ds)
 }
 
-func spawnEmployees(s storage.Storage) {
+func spawnEmployees(s storage) {
 	for i := 1; i <= 10; i++ {
 		s.insert(employee{id: i})
 	}
