@@ -14,7 +14,7 @@ func main() {
 func printCircleArea(radius int) {
 	circleArea, err := calculateCircleArea(radius)
 	if err != nil {
-		fmt.Println(err.Error())а
+		fmt.Println(err.Error())
 		return
 	}
 
